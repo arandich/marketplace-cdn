@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+    thumbor:
+        image: ghcr.io/minimalcompact/thumbor
+        restart: always
+        volumes:
+            - 'thumbor_storage:/data'
+        ports:
+            - '127.0.0.1:8888:80'
+        env_file:
+            - './thumbor/thumbor.env'
+    redis:
+        image: docker.io/bitnami/redis:7.0
+        container_name: redis
+        restart: always
+        ports:
+            - '127.0.0.1:6379:6379'
+        env_file:
+            - './redis/redis.env'
+        volumes:
+            - './redis/redis.conf:/usr/local/etc/redis/redis.conf'
+            - 'redis_storage:/bitnami/redis/data'
+
+volumes:
+    thumbor_storage:
+        driver: local
+    redis_storage:
+        driver: local
+
+networks:
+    marketplace_network:
+        external: true
