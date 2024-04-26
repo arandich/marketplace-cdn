@@ -11,6 +11,9 @@ services:
             - '127.0.0.1:8888:80'
         env_file:
             - './thumbor/thumbor.env'
+        environment:
+            - REDIS_STORAGE_SERVER_HOST=redis
+            - REDIS_QUEUE_SERVER_HOST=redis
         links:
             - redis:redis
     redis:
