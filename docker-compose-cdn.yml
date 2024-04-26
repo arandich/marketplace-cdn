@@ -8,7 +8,7 @@ services:
             - 'thumbor_storage:/data'
             - './thumbor/thumbor.conf:/app/thumbor.conf'
         ports:
-            - '127.0.0.1:8888:80'
+            - '0.0.0.0:8888:80'
         env_file:
             - './thumbor/thumbor.env'
     redis:
@@ -16,7 +16,7 @@ services:
         container_name: redis
         restart: always
         ports:
-            - '127.0.0.1:6379:6379'
+            - '0.0.0.0:6379:6379'
         env_file:
             - './redis/redis.env'
         volumes:
