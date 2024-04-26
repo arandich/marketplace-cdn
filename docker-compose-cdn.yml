@@ -6,7 +6,7 @@ services:
         restart: always
         volumes:
             - 'thumbor_storage:/data'
-            - './thumbor/thumbor.conf:/data/app/thumbor.conf'
+            - './thumbor/thumbor.conf:/app/thumbor.conf'
         ports:
             - '127.0.0.1:8888:80'
         env_file:
